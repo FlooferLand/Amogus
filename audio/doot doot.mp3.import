@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/doot doot.mp3-fdac824aa1b993a107f62767db18141a.mp3str"
+
+[deps]
+
+source_file="res://audio/doot doot.mp3"
+dest_files=[ "res://.import/doot doot.mp3-fdac824aa1b993a107f62767db18141a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

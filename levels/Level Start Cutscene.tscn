@@ -1,0 +1,244 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://sprites/other/start cutscene/amogus.png" type="Texture" id=1]
+[ext_resource path="res://sprites/lights/light.png" type="Texture" id=2]
+[ext_resource path="res://fonts/start cutscene/SC Big.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/start cutscene/SC Small.tres" type="DynamicFont" id=4]
+[ext_resource path="res://animations/Level Start Cutscene.tres" type="Animation" id=5]
+[ext_resource path="res://scripts/level start cutscene/start animation.gd" type="Script" id=6]
+[ext_resource path="res://audio/Amogus Brass Clicks.mp3" type="AudioStream" id=7]
+[ext_resource path="res://scripts/level start cutscene/play start sound.gd" type="Script" id=8]
+[ext_resource path="res://3d_env.tres" type="Environment" id=9]
+[ext_resource path="res://scripts/level start cutscene/player character.gd" type="Script" id=10]
+
+[sub_resource type="SpatialMaterial" id=9]
+roughness = 0.4
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.174242, 0.232323, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.792157, 0.929412, 0.929412, 0.929412, 0.784314, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="Curve" id=5]
+max_value = 4.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 4 ), -1.69864, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+lifetime_randomness = 0.1
+emission_shape = 2
+emission_box_extents = Vector3( 15, 0.2, 15 )
+spread = 100.0
+gravity = Vector3( 0, -0.5, 1.25 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 8 )
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+flags_vertex_lighting = true
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="QuadMesh" id=4]
+material = SubResource( 3 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "RESET"
+length = 0.114
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.24213, 0.677834 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 6.455, 0, 0 ) ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Camera/UI/UI/Title:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Camera/UI/UI/Title:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Camera/UI/UI/Title:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Camera/UI/UI/Title:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Camera/UI/UI/Info:percent_visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Camera:v_offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[node name="Level Start Cutscene" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.99366, -0.112423, 0, 0.112423, 0.99366, 0, 1.24213, 0.677834 )
+current = true
+
+[node name="UI" type="CanvasLayer" parent="Camera"]
+
+[node name="UI" type="Control" parent="Camera/UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Camera/UI/UI"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+margin_bottom = 1080.0
+custom_fonts/font = ExtResource( 3 )
+text = "mission"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="Label" parent="Camera/UI/UI"]
+anchor_right = 1.0
+margin_top = 246.0
+margin_bottom = 1080.0
+custom_fonts/font = ExtResource( 4 )
+text = "Find the amogus"
+align = 1
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map" type="Spatial" parent="."]
+
+[node name="Floor" type="CSGBox" parent="Map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0883257, -19.1854 )
+width = 40.0
+height = 0.1
+depth = 40.0
+material = SubResource( 9 )
+
+[node name="OmniLight" type="OmniLight" parent="Map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3375, -4.08108 )
+light_color = Color( 0, 0.552941, 1, 1 )
+light_energy = 10.0
+omni_range = 6.692
+omni_attenuation = 7.20999
+
+[node name="Particles" type="Particles" parent="Map"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615266, -5.75976 )
+amount = 3000
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 0.2
+visibility_aabb = AABB( -5.21655, -1.86892, -5.14843, 10.4331, 3.73785, 10.2969 )
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="SpotLight" type="SpotLight" parent="Map"]
+transform = Transform( 0.650376, 0.310162, -0.693405, -0.212186, 0.950684, 0.226224, 0.729375, 1.08685e-08, 0.684114, -3.07563, 2.33466, -0.924667 )
+light_color = Color( 0.611765, 0.890196, 1, 1 )
+light_energy = 0.7
+shadow_enabled = true
+spot_range = 9.61461
+spot_attenuation = 0.870551
+spot_angle_attenuation = 0.108819
+
+[node name="Player character" type="Spatial" parent="Map"]
+script = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite3D" parent="Map/Player character"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651398, -4.09623 )
+modulate = Color( 0.713726, 0.92549, 1, 1 )
+pixel_size = 0.007
+texture = ExtResource( 1 )
+
+[node name="Shadow" type="Sprite3D" parent="Map/Player character"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.0365231, -4.82729 )
+modulate = Color( 0, 0, 0, 1 )
+opacity = 0.2
+pixel_size = 0.007
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Level Start Cutscene" = ExtResource( 5 )
+anims/RESET = SubResource( 10 )
+script = ExtResource( 6 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -3.0
+bus = "music"
+script = ExtResource( 8 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 9 )

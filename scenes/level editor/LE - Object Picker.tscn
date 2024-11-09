@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://fonts/Small.tres" type="DynamicFont" id=1]
+[ext_resource path="res://h_flow_container/h_flow_container.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0.0980392 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 0.0196078 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 0.0588235 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.8, 0.8, 0.8, 0.352941 )
+border_blend = true
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[node name="LE - Object Picker" type="Panel"]
+margin_right = 355.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+focus_mode = 2
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+margin_left = 12.0
+margin_top = 6.0
+margin_right = 335.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 1 )
+text = "Amogus my object"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 39.0
+margin_right = -9.0
+margin_bottom = -10.0
+rect_pivot_offset = Vector2( -229.648, -61.7343 )
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selected" type="Panel" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -229.648, -61.7343 )
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="Container" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 43.0
+margin_right = -13.0
+margin_bottom = -14.0
+grow_vertical = 2
+rect_pivot_offset = Vector2( -229.648, -61.7343 )
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+horizontal_margin = 6.0
+vertical_margin = 6.0

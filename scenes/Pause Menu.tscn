@@ -1,0 +1,388 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://fonts/Main.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/pause menu/pause screen.gd" type="Script" id=2]
+[ext_resource path="res://fonts/OpenSans.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/pause menu/pause menu.gd" type="Script" id=4]
+[ext_resource path="res://scripts/pause menu/settings screen.gd" type="Script" id=5]
+[ext_resource path="res://scripts/multi-use/report a bug.gd" type="Script" id=6]
+[ext_resource path="res://fonts/Small.tres" type="DynamicFont" id=7]
+[ext_resource path="res://other/main.theme" type="Theme" id=8]
+[ext_resource path="res://shaders/bgblur.gdshader" type="Shader" id=9]
+[ext_resource path="res://scripts/pause menu/save settings button.gd" type="Script" id=10]
+[ext_resource path="res://scripts/pause menu/settings/setting toggle.gd" type="Script" id=11]
+[ext_resource path="res://scripts/pause menu/settings/setting slider.gd" type="Script" id=12]
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 9 )
+shader_param/blur_amount = 0.8
+shader_param/mix_amount = null
+shader_param/color_over = null
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 60
+font_data = ExtResource( 3 )
+
+[node name="Pause Menu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 8 )
+script = ExtResource( 4 )
+
+[node name="BG Blur" type="ColorRect" parent="."]
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="Panel" parent="."]
+modulate = Color( 0, 0, 0, 0.458824 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause Screen" type="Control" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="Pause Screen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -485.0
+margin_top = 96.0
+margin_right = 485.0
+margin_bottom = 179.0
+custom_fonts/font = SubResource( 4 )
+text = "PAUSED (sus)"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="Pause Screen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -139.0
+margin_top = 205.0
+margin_right = 138.0
+margin_bottom = 720.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="Pause Screen/Buttons"]
+margin_right = 277.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 100, 65 )
+custom_fonts/font = ExtResource( 1 )
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="Button" parent="Pause Screen/Buttons"]
+margin_top = 70.0
+margin_right = 277.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 100, 65 )
+custom_fonts/font = ExtResource( 1 )
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Report bug" type="Button" parent="Pause Screen/Buttons"]
+margin_top = 140.0
+margin_right = 277.0
+margin_bottom = 205.0
+rect_min_size = Vector2( 100, 65 )
+focus_mode = 0
+custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Report bug"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit to menu" type="Button" parent="Pause Screen/Buttons"]
+margin_top = 210.0
+margin_right = 277.0
+margin_bottom = 275.0
+rect_min_size = Vector2( 100, 65 )
+custom_fonts/font = ExtResource( 1 )
+text = "Eject to menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings Screen" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="Title" type="Label" parent="Settings Screen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -485.0
+margin_top = 96.0
+margin_right = 485.0
+margin_bottom = 179.0
+custom_fonts/font = SubResource( 5 )
+text = "Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBtn" type="Button" parent="Settings Screen"]
+margin_right = 155.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 1 )
+text = "< Back"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="Settings Screen"]
+self_modulate = Color( 0, 0, 0, 0.0980392 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -234.0
+margin_top = 205.0
+margin_right = 235.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Scroll" type="ScrollContainer" parent="Settings Screen/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="VBoxContainer" parent="Settings Screen/Background/Scroll"]
+margin_right = 453.0
+margin_bottom = 463.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fullscreen" type="CheckButton" parent="Settings Screen/Background/Scroll/Settings"]
+margin_right = 453.0
+margin_bottom = 39.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Fullscreen"
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+id = "fullscreen"
+
+[node name="FPS Cap" type="CheckButton" parent="Settings Screen/Background/Scroll/Settings"]
+margin_top = 49.0
+margin_right = 453.0
+margin_bottom = 88.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "FPS Cap"
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+id = "fps_cap"
+
+[node name="Label" type="Label" parent="Settings Screen/Background/Scroll/Settings/FPS Cap"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 112.0
+margin_top = 5.0
+margin_right = -67.0
+margin_bottom = 2.0
+mouse_filter = 1
+custom_colors/font_color = Color( 1, 1, 1, 0.482353 )
+text = "helps if your GPU is at 100% usage and ready to catch fire"
+valign = 1
+autowrap = true
+
+[node name="Quit Jumpscare" type="CheckButton" parent="Settings Screen/Background/Scroll/Settings"]
+margin_top = 98.0
+margin_right = 453.0
+margin_bottom = 137.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Impostor quit jumpscare"
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+id = "impostor_quit_jumpscare"
+
+[node name="Auto-update title" type="CheckButton" parent="Settings Screen/Background/Scroll/Settings"]
+visible = false
+margin_top = 114.0
+margin_right = 453.0
+margin_bottom = 161.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 1 )
+enabled_focus_mode = 0
+text = "Auto-update title"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Settings Screen/Background/Scroll/Settings/Auto-update title"]
+anchor_top = 0.702
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.00600052
+margin_bottom = 3.0
+custom_colors/font_color = Color( 0.643137, 0.643137, 0.643137, 1 )
+text = "Needed to display FPS"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio Sync" type="HSplitContainer" parent="Settings Screen/Background/Scroll/Settings"]
+visible = false
+margin_top = 114.0
+margin_right = 453.0
+margin_bottom = 153.0
+
+[node name="Text" type="Label" parent="Settings Screen/Background/Scroll/Settings/Audio Sync"]
+margin_right = 140.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 1 )
+text = "Audio sync"
+
+[node name="Slider" type="HSlider" parent="Settings Screen/Background/Scroll/Settings/Audio Sync"]
+margin_left = 152.0
+margin_right = 453.0
+margin_bottom = 16.0
+focus_mode = 0
+max_value = 2.0
+step = 0.1
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="Settings Screen/Background/Scroll/Settings/Audio Sync/Slider"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 9.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0.54902, 0.54902, 0.54902, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "off"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music Volume" type="HSplitContainer" parent="Settings Screen/Background/Scroll/Settings"]
+margin_top = 147.0
+margin_right = 453.0
+margin_bottom = 186.0
+custom_constants/separation = 40
+collapsed = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+id = "music_volume"
+
+[node name="Text" type="Label" parent="Settings Screen/Background/Scroll/Settings/Music Volume"]
+margin_right = 179.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 1 )
+text = "Music volume"
+valign = 1
+
+[node name="Slider" type="HSlider" parent="Settings Screen/Background/Scroll/Settings/Music Volume"]
+margin_left = 219.0
+margin_right = 453.0
+margin_bottom = 39.0
+size_flags_vertical = 3
+min_value = -50.0
+max_value = 0.0
+ticks_on_borders = true
+
+[node name="SFX Volume" type="HSplitContainer" parent="Settings Screen/Background/Scroll/Settings"]
+margin_top = 196.0
+margin_right = 453.0
+margin_bottom = 235.0
+custom_constants/separation = 40
+collapsed = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+id = "sfx_volume"
+
+[node name="Text" type="Label" parent="Settings Screen/Background/Scroll/Settings/SFX Volume"]
+margin_right = 177.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 1 )
+text = "SFX volume    "
+valign = 1
+
+[node name="Slider" type="HSlider" parent="Settings Screen/Background/Scroll/Settings/SFX Volume"]
+margin_left = 217.0
+margin_right = 453.0
+margin_bottom = 39.0
+size_flags_vertical = 3
+min_value = -50.0
+max_value = 0.0
+ticks_on_borders = true
+
+[node name="SaveSettings" type="Button" parent="Settings Screen/Background"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -191.0
+margin_top = -48.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = ExtResource( 7 )
+text = "Save settings"
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://other/Splash Screen-1.webm" type="VideoStream" id=1]
+[ext_resource path="res://scripts/splash screen.gd" type="Script" id=2]
+
+[node name="Splash Screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 1 )
+volume_db = -10.0
+autoplay = true
+buffering_msec = 1000
+bus = "music"
+script = ExtResource( 2 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sus Song.mp3-babe68502a7ec9bde18e47619d22920b.mp3str"
+
+[deps]
+
+source_file="res://audio/Sus Song.mp3"
+dest_files=[ "res://.import/Sus Song.mp3-babe68502a7ec9bde18e47619d22920b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

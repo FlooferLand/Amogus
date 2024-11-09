@@ -1,0 +1,310 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scripts/main menu/start game button.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Main.tres" type="DynamicFont" id=2]
+[ext_resource path="res://sprites/other/black.png" type="Texture" id=3]
+[ext_resource path="res://materials/stars.material" type="Material" id=4]
+[ext_resource path="res://sprites/other/impostor.png" type="Texture" id=5]
+[ext_resource path="res://scripts/main menu/main menu.gd" type="Script" id=6]
+[ext_resource path="res://fonts/Small.tres" type="DynamicFont" id=7]
+[ext_resource path="res://scripts/main menu/dababy button.gd" type="Script" id=8]
+[ext_resource path="res://scripts/main menu/view changelog button.gd" type="Script" id=9]
+[ext_resource path="res://scripts/main menu/quit button.gd" type="Script" id=10]
+[ext_resource path="res://audio/Vine Boom Short.wav" type="AudioStream" id=11]
+[ext_resource path="res://scripts/multi-use/report a bug.gd" type="Script" id=12]
+[ext_resource path="res://scripts/main menu/credits.gd" type="Script" id=13]
+[ext_resource path="res://scripts/main menu/start level editor.gd" type="Script" id=14]
+[ext_resource path="res://other/main.theme" type="Theme" id=15]
+
+[node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 15 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+material = ExtResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.0
+margin_top = 11.0
+margin_right = 200.0
+margin_bottom = 327.0
+custom_constants/separation = 3
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="Buttons"]
+margin_left = 49.0
+margin_right = 349.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 300, 55 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+action_mode = 0
+text = " play video game"
+expand_icon = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level Editor" type="Button" parent="Buttons"]
+margin_left = 49.0
+margin_top = 58.0
+margin_right = 349.0
+margin_bottom = 113.0
+rect_min_size = Vector2( 300, 55 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+action_mode = 0
+text = "level editor"
+expand_icon = true
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="-- Separator --" type="Control" parent="Buttons"]
+margin_top = 116.0
+margin_right = 399.0
+margin_bottom = 142.0
+rect_min_size = Vector2( 0, 26 )
+
+[node name="Changelog" type="Button" parent="Buttons"]
+margin_left = 49.0
+margin_top = 145.0
+margin_right = 349.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 300, 55 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+action_mode = 0
+text = "log of change"
+expand_icon = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Report a bug" type="Button" parent="Buttons"]
+margin_left = 49.0
+margin_top = 203.0
+margin_right = 349.0
+margin_bottom = 258.0
+rect_min_size = Vector2( 300, 55 )
+focus_mode = 0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "report a bug"
+expand_icon = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Buttons/Report a bug"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 0.2 )
+text = "*not an insect"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="Buttons"]
+margin_left = 49.0
+margin_top = 261.0
+margin_right = 349.0
+margin_bottom = 316.0
+rect_min_size = Vector2( 300, 55 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+action_mode = 0
+text = " quit video game"
+expand_icon = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio" type="AudioStreamPlayer" parent="Buttons/Quit"]
+stream = ExtResource( 11 )
+
+[node name="Icon" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.352941 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -147.0
+margin_top = -292.911
+margin_right = 147.0
+margin_bottom = -117.911
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -278.0
+margin_top = -121.0
+margin_right = 280.0
+margin_bottom = -81.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center][wave]amogus rage game[/wave]"
+text = "amogus rage game"
+fit_content_height = true
+scroll_active = false
+
+[node name="Info" type="RichTextLabel" parent="."]
+modulate = Color( 0.772549, 0.772549, 0.772549, 1 )
+anchor_right = 1.0
+anchor_bottom = 0.054
+margin_top = 11.0
+margin_bottom = 62.12
+custom_fonts/normal_font = ExtResource( 7 )
+bbcode_enabled = true
+bbcode_text = "[center]"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Version" type="Label" parent="."]
+modulate = Color( 0.772549, 0.772549, 0.772549, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -189.0
+margin_top = -81.0
+margin_right = 189.0
+margin_bottom = -29.0
+custom_fonts/font = ExtResource( 7 )
+text = "version"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="RichTextLabel" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 17.0
+margin_top = -67.0
+margin_right = 958.0
+rect_pivot_offset = Vector2( -47, -603 )
+custom_fonts/normal_font = ExtResource( 7 )
+bbcode_enabled = true
+bbcode_text = "credits"
+text = "credits"
+scroll_active = false
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leaderboard" type="Control" parent="."]
+visible = false
+anchor_left = 0.837
+anchor_top = 0.931
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.640015
+margin_top = -0.320068
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="Leaderboard"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -34.0
+margin_right = -83.0
+max_length = 16
+placeholder_text = "Name"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddBtn" type="Button" parent="Leaderboard"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -82.0
+margin_top = -33.0
+text = "Set name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Leaderboard"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -50.0
+text = "Leaderboard"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dababy Button" type="CheckButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -360.0
+margin_top = -46.0
+margin_right = -9.99878
+margin_bottom = -6.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 7 )
+enabled_focus_mode = 0
+text = "dababy mode (easy difficulty)"
+script = ExtResource( 8 )
+
+[node name="Audio" type="AudioStreamPlayer" parent="Dababy Button"]
+bus = "sfx"

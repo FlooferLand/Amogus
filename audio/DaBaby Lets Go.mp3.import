@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/DaBaby Lets Go.mp3-63654e1d0c6834199d1d42222a441c71.mp3str"
+
+[deps]
+
+source_file="res://audio/DaBaby Lets Go.mp3"
+dest_files=[ "res://.import/DaBaby Lets Go.mp3-63654e1d0c6834199d1d42222a441c71.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

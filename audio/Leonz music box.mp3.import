@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Leonz music box.mp3-3aa06a74eaa5eb76b67980300a8a38a9.mp3str"
+
+[deps]
+
+source_file="res://audio/Leonz music box.mp3"
+dest_files=[ "res://.import/Leonz music box.mp3-3aa06a74eaa5eb76b67980300a8a38a9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

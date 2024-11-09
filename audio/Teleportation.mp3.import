@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Teleportation.mp3-25da4f2cf6151118d6e602bbcd2fff16.mp3str"
+
+[deps]
+
+source_file="res://audio/Teleportation.mp3"
+dest_files=[ "res://.import/Teleportation.mp3-25da4f2cf6151118d6e602bbcd2fff16.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

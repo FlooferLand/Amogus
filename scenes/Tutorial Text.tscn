@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/Tutorial.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/tutorial text.gd" type="Script" id=2]
+[ext_resource path="res://fonts/Small.tres" type="DynamicFont" id=3]
+
+[node name="Tutorial Text" type="RichTextLabel"]
+margin_right = 1006.0
+margin_bottom = 388.0
+custom_fonts/italics_font = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]TUTORIAL: [color=silver][i]please read for god's sake none of my beta testers read this it's driving me insane waponfpoanfpoapomfmop[/i][/color]
+
+"
+text = "TUTORIAL: please read for god's sake none of my beta testers read this it's driving me insane waponfpoanfpoapomfmop
+
+"
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Visibility" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -45.1262, -13.8462 )
+scale = Vector2( 1.08738, 1.81538 )
+rect = Rect2( -10, -10, 1030, 260 )

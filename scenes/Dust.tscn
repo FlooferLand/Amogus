@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://particles/dust punch.tres" type="Material" id=1]
+[ext_resource path="res://sprites/other/dust.png" type="Texture" id=2]
+[ext_resource path="res://scripts/multi-use/particle killer.gd" type="Script" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Dust" type="Particles2D"]
+material = SubResource( 1 )
+scale = Vector2( 1.03385, 1.00774 )
+amount = 16
+speed_scale = 1.25
+explosiveness = 0.8
+randomness = 0.15
+draw_order = 1
+process_material = ExtResource( 1 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

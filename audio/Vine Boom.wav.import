@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Vine Boom.wav-1adc95b3219f61ece0e7b8fc28d84d2e.sample"
+
+[deps]
+
+source_file="res://audio/Vine Boom.wav"
+dest_files=[ "res://.import/Vine Boom.wav-1adc95b3219f61ece0e7b8fc28d84d2e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

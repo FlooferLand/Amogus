@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/DaBaby Ha.wav-b3bfae9312cb4d31a348b3791c4977b4.sample"
+
+[deps]
+
+source_file="res://audio/DaBaby Ha.wav"
+dest_files=[ "res://.import/DaBaby Ha.wav-b3bfae9312cb4d31a348b3791c4977b4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

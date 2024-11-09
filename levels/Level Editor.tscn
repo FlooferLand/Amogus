@@ -1,0 +1,162 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://audio/Leonz music box.mp3" type="AudioStream" id=1]
+[ext_resource path="res://scripts/level editor/level editor playerus.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Pause Menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://joystick/Joystick.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/other/pause_button.png" type="Texture" id=5]
+[ext_resource path="res://scripts/multi-use/touchscreen button.gd" type="Script" id=6]
+[ext_resource path="res://sprites/other/black.png" type="Texture" id=7]
+[ext_resource path="res://materials/stars.material" type="Material" id=8]
+[ext_resource path="res://scripts/grid.gd" type="Script" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://fonts/Main.tres" type="DynamicFont" id=11]
+[ext_resource path="res://other/main.theme" type="Theme" id=12]
+[ext_resource path="res://scripts/level editor/object picker panel.gd" type="Script" id=14]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.862745 )
+border_width_right = 8
+border_blend = true
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_detail = 16
+shadow_color = Color( 0, 0, 0, 0.513726 )
+shadow_size = 16
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 67.5
+
+[node name="Level Editor" type="Node2D"]
+
+[node name="Music" type="AudioStreamPlayer" parent="." groups=["music"]]
+stream = ExtResource( 1 )
+volume_db = -9.0
+pitch_scale = 4.0
+autoplay = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 953, 541.666 )
+texture = ExtResource( 10 )
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="Level Editor Playerus" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Cam" type="Camera2D" parent="Level Editor Playerus"]
+current = true
+
+[node name="UI" type="CanvasLayer" parent="Level Editor Playerus/Cam"]
+
+[node name="Level Editor UI" type="Control" parent="Level Editor Playerus/Cam/UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" type="Control" parent="Level Editor Playerus/Cam/UI/Level Editor UI"]
+modulate = Color( 0.705882, 0.956863, 1, 0.470588 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Object Picker Panel" type="Panel" parent="Level Editor Playerus/Cam/UI/Level Editor UI"]
+anchor_bottom = 1.0
+margin_right = 355.0
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Level Editor Playerus/Cam/UI/Level Editor UI/Object Picker Panel"]
+anchor_right = 1.0
+anchor_bottom = 0.046
+margin_bottom = 0.319996
+custom_fonts/font = ExtResource( 11 )
+text = "Objects:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scroll" type="ScrollContainer" parent="Level Editor Playerus/Cam/UI/Level Editor UI/Object Picker Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 50.0
+follow_focus = true
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="VBoxContainer" parent="Level Editor Playerus/Cam/UI/Level Editor UI/Object Picker Panel/Scroll"]
+show_behind_parent = true
+margin_right = 355.0
+margin_bottom = 1030.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Touchscreen" type="Control" parent="Level Editor Playerus/Cam/UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Joystick" parent="Level Editor Playerus/Cam/UI/Touchscreen" instance=ExtResource( 4 )]
+visible = false
+
+[node name="Pause Button" type="Control" parent="Level Editor Playerus/Cam/UI/Touchscreen"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -160.0
+margin_top = 8.0
+margin_right = -11.0
+margin_bottom = 160.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TouchScreenButton" parent="Level Editor Playerus/Cam/UI/Touchscreen/Pause Button"]
+scale = Vector2( 1.16406, 1.17032 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 5 )
+shape = SubResource( 1 )
+
+[node name="Pause Menu" parent="Level Editor Playerus/Cam/UI" instance=ExtResource( 3 )]
+visible = false
+
+[node name="Background" type="CanvasLayer" parent="Level Editor Playerus/Cam/UI"]
+layer = -128
+
+[node name="TextureRect" type="TextureRect" parent="Level Editor Playerus/Cam/UI/Background"]
+modulate = Color( 1, 1, 1, 0.654902 )
+show_behind_parent = true
+material = ExtResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

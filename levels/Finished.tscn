@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://audio/Sus Song.mp3" type="AudioStream" id=1]
+[ext_resource path="res://scripts/finished level.gd" type="Script" id=2]
+[ext_resource path="res://fonts/Big.tres" type="DynamicFont" id=3]
+[ext_resource path="res://sprites/other/background.jpg" type="Texture" id=4]
+[ext_resource path="res://fonts/Main.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scripts/speedrun submission.gd" type="Script" id=6]
+[ext_resource path="res://fonts/Small.tres" type="DynamicFont" id=7]
+[ext_resource path="res://other/main.theme" type="Theme" id=8]
+
+[node name="Finished" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 8 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="You won text" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -640.0
+margin_top = 110.001
+margin_right = 640.0
+margin_bottom = 193.001
+custom_fonts/font = ExtResource( 3 )
+text = "you won, that's quite sus, innit?"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -640.0
+margin_top = 227.0
+margin_right = 640.0
+margin_bottom = 433.0
+custom_fonts/italics_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]"
+
+[node name="Speedrun submission" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -615.0
+margin_top = 451.0
+margin_right = 614.0
+margin_bottom = 557.0
+focus_mode = 2
+custom_fonts/italics_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]"
+selection_enabled = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "sfx"
+
+[node name="Main Menu button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -96.0
+margin_top = -92.0
+margin_right = 96.0
+margin_bottom = -27.0
+custom_fonts/font = ExtResource( 5 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leaderboard" type="ItemList" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -103.0
+margin_top = 6.03723
+margin_right = 104.0
+margin_bottom = 205.037
+__meta__ = {
+"_edit_use_anchors_": false
+}

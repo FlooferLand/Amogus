@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://materials/portal.material" type="Material" id=1]
+[ext_resource path="res://sprites/other/explosion.png" type="Texture" id=2]
+[ext_resource path="res://scripts/portal.gd" type="Script" id=3]
+[ext_resource path="res://sprites/lights/light.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 59.5615, 112.506 )
+
+[node name="Portal" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+light_mask = 0
+material = ExtResource( 1 )
+scale = Vector2( 0.5, 1 )
+z_index = 256
+texture = ExtResource( 2 )
+
+[node name="Collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 4 )
+color = Color( 0, 0.811765, 1, 1 )

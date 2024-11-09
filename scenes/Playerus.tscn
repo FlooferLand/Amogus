@@ -1,0 +1,155 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://animations/Playerus.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://scripts/playerus.gd" type="Script" id=2]
+[ext_resource path="res://sprites/other/black.png" type="Texture" id=3]
+[ext_resource path="res://audio/Vine Boom.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/fart.mp3" type="AudioStream" id=5]
+[ext_resource path="res://scripts/cam.gd" type="Script" id=6]
+[ext_resource path="res://audio/Vine Boom Short.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/Teleportation.mp3" type="AudioStream" id=8]
+[ext_resource path="res://audio/Sus Song.mp3" type="AudioStream" id=9]
+[ext_resource path="res://joystick/Joystick.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Touchscreen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://fonts/Main.tres" type="DynamicFont" id=12]
+[ext_resource path="res://scenes/Speedrun Timer.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Pause Menu.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sprites/lights/light.png" type="Texture" id=15]
+[ext_resource path="res://materials/stars.material" type="Material" id=16]
+[ext_resource path="res://scripts/ui.gd" type="Script" id=17]
+[ext_resource path="res://shaders/vignette.gdshader" type="Shader" id=18]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 18 )
+shader_param/vignette_intensity = 0.07
+shader_param/vignette_opacity = 1.0
+shader_param/vignette_rgb = Color( 0, 0, 0, 1 )
+
+[node name="Playerus" type="KinematicBody2D" groups=["player"]]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 1.0026, 1 )
+polygon = PoolVector2Array( -23.9, 42, -12.989, 43.926, 0, 44.4, 12.9895, 43.9257, 24, 42, 23.9378, -28, 15.958, -42, -15.958, -42, -23.9378, -28 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.453717, 0.446014 )
+z_index = 1
+frames = ExtResource( 1 )
+animation = "idle"
+playing = true
+
+[node name="Glow" type="Sprite" parent="Sprite"]
+modulate = Color( 1, 1, 1, 0.0235294 )
+z_index = -1
+texture = ExtResource( 15 )
+
+[node name="Cam" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.1, 1.1 )
+smoothing_enabled = true
+smoothing_speed = 8.0
+script = ExtResource( 6 )
+
+[node name="Jump SFX" type="AudioStreamPlayer" parent="Cam"]
+stream = ExtResource( 4 )
+volume_db = 1.25
+bus = "sfx"
+
+[node name="Fail SFX" type="AudioStreamPlayer" parent="Cam"]
+stream = ExtResource( 5 )
+volume_db = -5.5
+bus = "sfx"
+
+[node name="Death SFX" type="AudioStreamPlayer" parent="Cam"]
+stream = ExtResource( 7 )
+volume_db = 4.0
+bus = "sfx"
+
+[node name="Win SFX" type="AudioStreamPlayer" parent="Cam"]
+stream = ExtResource( 9 )
+volume_db = -5.814
+bus = "sfx"
+
+[node name="Teleportus SFX" type="AudioStreamPlayer" parent="Cam"]
+stream = ExtResource( 8 )
+volume_db = -7.0
+bus = "sfx"
+
+[node name="UI" type="CanvasLayer" parent="Cam"]
+script = ExtResource( 17 )
+
+[node name="Indicators" type="VBoxContainer" parent="Cam/UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 8.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mode Indicator" type="Label" parent="Cam/UI/Indicators"]
+margin_right = 1904.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 12 )
+text = "(insert mode indicator lol)"
+
+[node name="Attempt Counter" type="Label" parent="Cam/UI/Indicators"]
+margin_top = 43.0
+margin_right = 1904.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 12 )
+text = "Attempts: "
+
+[node name="Speedrun Timer" parent="Cam/UI/Indicators" instance=ExtResource( 13 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 86.0
+margin_right = 1904.0
+margin_bottom = 125.0
+
+[node name="Touchscreen" parent="Cam/UI" instance=ExtResource( 11 )]
+
+[node name="Joystick" parent="Cam/UI/Touchscreen" instance=ExtResource( 10 )]
+
+[node name="Pause Menu" parent="Cam/UI" instance=ExtResource( 14 )]
+visible = false
+margin_top = 4.0
+margin_bottom = 4.0
+
+[node name="Background" type="CanvasLayer" parent="Cam"]
+layer = -128
+
+[node name="BG" type="TextureRect" parent="Cam/Background"]
+modulate = Color( 1, 1, 1, 0.635294 )
+show_behind_parent = true
+material = ExtResource( 16 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+
+[node name="Vignette" type="ColorRect" parent="Cam/Background"]
+visible = false
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light" type="Light2D" parent="."]
+scale = Vector2( 0.453717, 0.446014 )
+texture = ExtResource( 15 )
+texture_scale = 5.0
+color = Color( 1, 0.690196, 0.690196, 1 )
+energy = 0.6
+shadow_color = Color( 0, 0, 0, 0.568627 )

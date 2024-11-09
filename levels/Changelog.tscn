@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/changelog.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Main.tres" type="DynamicFont" id=2]
+[ext_resource path="res://sprites/other/black.png" type="Texture" id=3]
+[ext_resource path="res://materials/stars.material" type="Material" id=4]
+[ext_resource path="res://fonts/Small.tres" type="DynamicFont" id=5]
+[ext_resource path="res://fonts/Tiny.tres" type="DynamicFont" id=6]
+[ext_resource path="res://fonts/OpenSans.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://other/main.theme" type="Theme" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 19
+outline_color = Color( 1, 0, 0, 1 )
+extra_spacing_char = 3
+extra_spacing_space = 1
+font_data = ExtResource( 7 )
+
+[node name="Changelog" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 8 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background Again (even more!)" type="TextureRect" parent="."]
+material = ExtResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 2 )
+text = "Changelog:"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0.745098 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 56.0
+margin_right = -64.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBtn" type="Button" parent="."]
+margin_right = 126.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 2 )
+text = "<- Back"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = 70.0
+margin_right = -64.0
+margin_bottom = -32.0
+focus_mode = 2
+custom_constants/line_separation = 5
+custom_fonts/mono_font = SubResource( 1 )
+custom_fonts/italics_font = ExtResource( 6 )
+custom_fonts/bold_font = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+selection_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
